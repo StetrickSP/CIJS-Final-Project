@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from 'react-router-dom';
 
 //assets 
 import wave from '../assets/wave.svg';
+import Nav from '../components/Nav';
 
 //helper functions
 import { fetchData } from '../helpers';
@@ -18,7 +19,7 @@ const Main = () => {
 
     return (
         <div className="layout">
-            <h1>Main</h1>
+            <Nav/>
             <main>
              <Outlet/>
             </main>

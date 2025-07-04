@@ -21,6 +21,14 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
         errorElement: <Error/>
       },
+      {
+        path: "about",
+        element: <h1>About us</h1>
+      },
+      {
+        path: "contact", 
+        element: <h1>This is our contact infomation</h1>
+      },
     ]
   },
   {
