@@ -1,14 +1,46 @@
-const Nav = () => {
+// rrd imports
+import { Form, NavLink } from "react-router-dom";
+
+// library
+import { TrashIcon, UserGroupIcon, PhoneIcon } from '@heroicons/react/24/solid';
+
+// assets
+import logomark from '../assets/logomark.svg';
+
+const Nav = ( {userName} ) => {
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-lg font-bold">MyApp</div>
-        <ul className="flex space-x-4">
-          <li><a href="/" className="text-white hover:text-gray-400">Home</a></li>
-          <li><a href="/about" className="text-white hover:text-gray-400">About</a></li>
-          <li><a href="/contact" className="text-white hover:text-gray-400">Contact</a></li>
-        </ul>
-      </div>
+    <nav>
+      <NavLink to="/" aria-label="Go to home page">
+        <img src={logomark} alt="" height={30}/>
+        <span>Home</span>
+      </NavLink>
+      <NavLink to="/about" aria-label="Go to home page">
+        <UserGroupIcon width={30} color="#10B7C0"/>
+        <span>About us</span>
+      </NavLink>
+      <NavLink to="/contact" aria-label="Go to home page">
+        <PhoneIcon width={30} color="#10B7C0"/>
+        <span>Contacts</span>
+      </NavLink>
+      {
+        userName && (
+          <Form
+            method="post"
+            action="/logout"
+            onSubmit={ (event) => {
+              if (!confirm("Are you sure you want to delete your account?")) {
+                event.preventDefault();
+              }
+            }
+          }
+          >
+            <button type="submit" className="btn btn--warning">
+              <span>Delete User</span>
+              <TrashIcon width={20}/>
+            </button>
+          </Form>
+        )
+      }
     </nav>
   );
 }

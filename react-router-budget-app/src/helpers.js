@@ -7,3 +7,8 @@ export const fetchData = (key) => {
         return value;
     }
 }
+
+//Delete Item
+export const deleteItem = ( {key} ) => {
+    return localStorage.removeItem(key);
+}
