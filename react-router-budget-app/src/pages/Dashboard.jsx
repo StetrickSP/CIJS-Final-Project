@@ -1,6 +1,9 @@
 // rrd imports 
 import { useLoaderData } from 'react-router-dom';
 
+// components
+import Intro from '../components/Intro';
+
 //helper functions
 import { fetchData } from '../helpers';
 
@@ -10,15 +13,21 @@ export function dashboardLoader() {
     return { userName };
 }
 
+// action
+export async function dashboardAction({ request }) {
+    const data = await request.formData();
+    const userName = formData.get("userName");
+    localStorage.setItem("userName", userName);
+    return { userName };
+}
+
 const Dashboard = () => {
     const { userName }  = useLoaderData()
 
     return (
-        <div>
-            <h1>Welcome, {userName}</h1>
-            <h2>Dashboard</h2>
-            <p>Welcome to the dashboard!</p>
-        </div>
+        <>
+            { userName ? (<h1>{userName}</h1>) : <Intro/> }
+        </>
   );
 }
 export default Dashboard;

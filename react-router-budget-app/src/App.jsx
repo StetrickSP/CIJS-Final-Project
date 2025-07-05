@@ -12,7 +12,7 @@ import About, { aboutLoader } from "./pages/About";
 import Error from "./pages/Error";
 
 // Library
-import{ ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
