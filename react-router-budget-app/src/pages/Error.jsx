@@ -1,4 +1,4 @@
-const Error = () => {
+const Error = () => {  //!! To be edited -- video #6
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h1 className="text-6xl font-bold text-red-600">404</h1>

@@ -7,7 +7,7 @@ import Main, { mainLoader } from "./layouts/Main";
 import { logoutAction } from "./actions/logout";
 
 // Routes
-import Dashboard, { dashboardLoader } from "./pages/Dashboard";
+import Dashboard, { dashboardLoader, dashboardAction } from "./pages/Dashboard";
 import About, { aboutLoader } from "./pages/About";
 import Error from "./pages/Error";
 
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
         index: true, // This will render the Dashboard component at the root path
         element: <Dashboard/>,
         loader: dashboardLoader,
+        action: dashboardAction, // This will call the dashboard action when the user submits the form
         errorElement: <Error/>
       },
       {
