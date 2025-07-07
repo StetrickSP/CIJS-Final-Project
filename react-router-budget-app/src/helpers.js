@@ -8,6 +8,17 @@ export const fetchData = (key) => {
     }
 }
 
+// create budget
+export const createBudget = ({name, amount}) => {
+    const newItem = {
+        id: crypto.randomUUID(),
+        name: name,
+        createAt: Date.now(),
+        amount: +amount,
+        // color: 
+    }
+}
+
 //Delete Item
 export const deleteItem = ( {key} ) => {
     return localStorage.removeItem(key);

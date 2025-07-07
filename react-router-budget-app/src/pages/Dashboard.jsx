@@ -33,6 +33,18 @@ export async function dashboardAction({ request }) {
             throw new Error("Failed to save user name");
         } 
     }
+
+    // Create Budget submission
+    if (_action === "createBudget") {
+        try {
+            // create budget
+
+            throw new Error("Failed");
+            return toast.success(`Budget created successfully!`);
+        } catch (error) {
+            throw new Error("There was an error creating the budget");
+        }
+    }
 }
 
 const Dashboard = () => {
