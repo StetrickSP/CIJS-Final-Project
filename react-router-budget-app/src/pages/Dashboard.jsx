@@ -39,7 +39,6 @@ export async function dashboardAction({ request }) {
         try {
             // create budget
 
-            throw new Error("Failed");
             return toast.success(`Budget created successfully!`);
         } catch (error) {
             throw new Error("There was an error creating the budget");
@@ -67,18 +66,6 @@ const Dashboard = () => {
             : <Intro/> }
         </>
   );
-}
-//action
-export async function dashboardAction({request}) {
-  const data = await request.formData();
-  const formData = Object.fromEntries(data)
-  try{
-    throw new Error("hehe");
-    localStorage.setItem("userName", JSON.stringify(formData.userName))
-    return toast.success(`Welcome ${formData.userName}!`);
-  }catch (e){
-    return new Error("There was an problem to create your account.");
-  }
 }
 
 export default Dashboard;
