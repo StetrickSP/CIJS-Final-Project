@@ -9,7 +9,7 @@ import Intro from '../components/Intro';
 import AddBudgetForm from '../components/AddBudgetForm';
 
 //helper functions
-import { fetchData } from '../helpers';
+import { createBudget, fetchData } from '../helpers';
 
 // loader
 export function dashboardLoader() {
@@ -31,6 +31,19 @@ export async function dashboardAction({ request }) {
             return toast.success(`Welcome ${values.userName}!`);
         } catch (error) {
             throw new Error("Failed to save user name");
+        } 
+    };
+
+    if (_action === "createBudget") {
+        try {
+            // create a new budget
+            createBudget({
+                name: values.newBudget,
+                amount: values.newBudgetAmount,
+            });
+            return toast.success(`Budget created!`);
+        } catch (error) {
+            throw new Error("Failed to create budget");
         } 
     }
 }
