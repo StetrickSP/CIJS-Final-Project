@@ -2,7 +2,7 @@ import { fetchData } from "../helpers";
 import { useRouteError, Link } from "react-router-dom";
 
 // Libraries
-import { HomeIcon, ArrowUturnLeft } from "@heroicons/react/24/solid";
+import { HomeIcon, ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 
 const Error = () => {
   const error = useRouteError();
@@ -14,7 +14,7 @@ const Error = () => {
       <div className="flex-md gap-4 mt-4">
         <button className="btn btn--dark"
           onClick={() => navigate(-1)}>
-          <ArrowUturnLeft width={20} />
+          <ArrowUturnLeftIcon width={20} />
           <span>Go Back</span>
         </button>
         <Link 
