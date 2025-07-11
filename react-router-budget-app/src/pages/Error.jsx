@@ -1,10 +1,31 @@
-const Error = () => {  //!! To be edited -- video #6
+import { fetchData } from "../helpers";
+import { useRouteError, Link } from "react-router-dom";
+
+// Libraries
+import { HomeIcon, ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
+
+const Error = () => {
+  const error = useRouteError();
+  const navigate = useNavigation();
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-6xl font-bold text-red-600">404</h1>
-      <p className="mt-4 text-xl text-gray-700">Page Not Found</p>
-      <p className="mt-2 text-gray-500">The page you are looking for does not exist.</p>
+      <h1 className="text-6xl font-bold text-red-600">We have a problem</h1>
+      <p>{error.message || error.statusText}</p>
+      <div className="flex-md gap-4 mt-4">
+        <button className="btn btn--dark"
+          onClick={() => navigate(-1)}>
+          <ArrowUturnLeftIcon width={20} />
+          <span>Go Back</span>
+        </button>
+        <Link 
+          to="/"
+          className="btn btn--dark">
+          <HomeIcon width={20} />
+          <span>Go home</span>
+        </Link>
+      </div>
     </div>
   );
 }
+
 export default Error;
