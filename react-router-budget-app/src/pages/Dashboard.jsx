@@ -7,9 +7,10 @@ import { toast } from 'react-toastify';
 // components
 import Intro from '../components/Intro';
 import AddBudgetForm from '../components/AddBudgetForm';
+import AddExpenseForm from '../components/AddExpenseForm';
 
 //helper functions
-import { createBudget, fetchData } from '../helpers';
+import { createExpense, createBudget, fetchData, waait } from '../helpers';
 
 // loader
 export function dashboardLoader() {
@@ -20,6 +21,8 @@ export function dashboardLoader() {
 
 // action
 export async function dashboardAction({ request }) {
+    await waait(); // Simulate a delay for the action
+
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
     console.log(_action);
@@ -34,6 +37,7 @@ export async function dashboardAction({ request }) {
         } 
     };
 
+    // Create Budget submission
     if (_action === "createBudget") {
         try {
             // create a new budget
@@ -45,6 +49,21 @@ export async function dashboardAction({ request }) {
         } catch (error) {
             throw new Error("Failed to create budget");
         } 
+    };
+
+    // Create Expense submission
+    if (_action === "createExpense") {
+        try {
+            // create a new expense
+            createExpense({
+                name: values.newExpense,
+                amount: values.newExpenseAmount,
+                budgetId: values.newExpenseBudget,
+            })
+            return toast.success(`Expense ${values.newExpense} created!`);
+        } catch (error) {
+            throw new Error("Failed to create expense");
+        } 
     }
 }
 
@@ -54,17 +73,31 @@ const Dashboard = () => {
     return (
         <>
             { userName ? 
+            // Render the dashboard if userName exists
             (<div className='dashboard'>
                    <h1>Welcome back, <span className="accent">{userName}</span></h1>
-                <div className='grid-sm'>
-                    {/* {budgets ? () : ()} */}
-                    <div className="grid-lg">
-                        <div className="flex-lg">
-                            <AddBudgetForm/>
-                        </div>
-                    </div>
+                <div className='grid-sm'>  
+                    {
+                        budgets && budgets.length > 0 ?
+                        (<div className="grid-lg">
+                            <div className="flex-lg">
+                                <AddBudgetForm/>
+                                <AddExpenseForm budgets={budgets}/>
+                            </div>
+                        </div>)
+                        :
+                        (
+                            <div className="grid-sm">
+                                <p>Personal budgeting is the secret to financial freedom.</p>
+                                <p>Start creating a budget now!</p>
+                                <AddBudgetForm/>
+                            </div>
+                        )
+                    }
+                    
                 </div>
             </div>) 
+            // Render the intro component if userName does not exist
             : <Intro/> }
         </>
   );

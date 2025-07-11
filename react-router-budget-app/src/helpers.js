@@ -1,3 +1,5 @@
+export const waait = () => new Promise(res => setTimeout(res, Math.random() * 2000));
+
 // Random color generator
 const generateRandomColor = () => {
     const existingBudgetLength = fetchData("budgets")?.length ?? 0;
@@ -25,6 +27,19 @@ export const createBudget = ( {name, amount} ) => {
     };
     const existingBudgets = fetchData("budgets") ?? [];
     return localStorage.setItem("budgets", JSON.stringify([...existingBudgets, newItem]));
+}
+
+//Create an expense
+export const createExpense = ( {name, amount, budgetId} ) => {
+    const newItem = {
+        id: crypto.randomUUID(),
+        name: name,
+        createdAt: Date.now(),
+        amount: +amount, 
+        budgetId: budgetId,
+    };
+    const existingExpenses = fetchData("expenses") ?? [];
+    return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]));
 }
 
 //Delete Item
