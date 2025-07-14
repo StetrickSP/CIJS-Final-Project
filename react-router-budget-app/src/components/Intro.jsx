@@ -8,6 +8,8 @@ import { UserPlusIcon } from '@heroicons/react/24/solid';
 import illustration from '../assets/illustration.jpg';
 
 const Intro = () => {
+    // -- Add await functionality if needed for data fetching or other async operations here --
+
     return (
         <div className="intro">
             <div>
@@ -32,4 +34,5 @@ const Intro = () => {
         </div>
     );
 }
+
 export default Intro;

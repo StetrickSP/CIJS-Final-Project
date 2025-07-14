@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 export async function logoutAction() {
     // Clear user data from local storage
     deleteItem({ key: "userName" });
+    deleteItem({ key: "budgets" });
+    deleteItem({ key: "expenses" });
     toast.success("You have successfully deleted your account!");
 
     // Optionally, you can redirect the user to a different page after logout

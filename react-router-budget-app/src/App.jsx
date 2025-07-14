@@ -10,6 +10,7 @@ import { logoutAction } from "./actions/logout";
 import Dashboard, { dashboardLoader, dashboardAction } from "./pages/Dashboard";
 import About, { aboutLoader } from "./pages/About";
 import Error from "./pages/Error";
+import ExpensesPage, { expensesLoader } from "./pages/ExpensesPage";
 
 // Library
 import { ToastContainer } from 'react-toastify';
@@ -38,6 +39,12 @@ const router = createBrowserRouter([
       {
         path: "contact", 
         element: <h1>This is our contact infomation</h1>
+      },
+      {
+        path: "expenses", 
+        element: <ExpensesPage/>,
+        loader: expensesLoader, 
+        errorElement: <Error/>
       },
       {
         path: "logout", 
