@@ -16,6 +16,22 @@ export const fetchData = (key) => {
     }
 }
 
+// Get all items from local storage
+export const getAllMatchingItems = ({ category, key, value }) => {
+    const data = fetchData(category) ?? [];
+    return data.filter((item) => item[key] === value);
+};
+
+// delete an item from local storage
+export const deleteItem = ({ key, id }) => {
+    const existingData = fetchData(key);
+    if (id) {
+        const newData = existingData.filter((item) => item.id !== id);
+        return localStorage.setItem(key, JSON.stringify(newData));
+    }
+    return localStorage.removeItem(key);
+}
+
 //Create a budget
 export const createBudget = ( {name, amount} ) => {
     const newItem = {
@@ -42,10 +58,6 @@ export const createExpense = ( {name, amount, budgetId} ) => {
     return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]));
 }
 
-//Delete Item
-export const deleteItem = ( {key} ) => {
-    return localStorage.removeItem(key);
-}
 
 // Total spent by budget
 export const calculateSpentByBudget = (budgetId) => {
@@ -74,6 +86,7 @@ export const formatPercentage = (amt) => {
 
 // Format currency
 export const formatCurrency = (amt) => {
+    if (amt == null || isNaN(amt)) return "₫0";
     return amt.toLocaleString(undefined, {
         style: "currency",
         currency: "VND",

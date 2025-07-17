@@ -10,7 +10,7 @@ import { logoutAction } from "./actions/logout";
 import Dashboard, { dashboardLoader, dashboardAction } from "./pages/Dashboard";
 import About, { aboutLoader } from "./pages/About";
 import Error from "./pages/Error";
-import ExpensesPage, { expensesLoader } from "./pages/ExpensesPage";
+import ExpensesPage, { expensesLoader, expensesAction } from "./pages/ExpensesPage";
 
 // Library
 import { ToastContainer } from 'react-toastify';
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         path: "expenses", 
         element: <ExpensesPage/>,
         loader: expensesLoader, 
-        errorElement: <Error/>
+        action: expensesAction, // This will call the expenses action when the user submits the form
       },
       {
         path: "logout", 
