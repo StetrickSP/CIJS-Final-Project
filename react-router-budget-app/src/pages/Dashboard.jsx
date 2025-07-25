@@ -82,6 +82,17 @@ export async function dashboardAction({ request }) {
             throw new Error("Failed to delete expense");
         } 
     }
+
+    // Create Budget submission
+    if (_action === "createBudget") {
+        try {
+            // create budget
+
+            return toast.success(`Budget created successfully!`);
+        } catch (error) {
+            throw new Error("There was an error creating the budget");
+        }
+    }
 }
 
 const Dashboard = () => {

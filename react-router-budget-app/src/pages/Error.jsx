@@ -1,23 +1,21 @@
 import { fetchData } from "../helpers";
-import { useRouteError, Link, useNavigate } from "react-router-dom";
-import { HomeIcon, ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
+import { useRouteError, Link } from "react-router-dom";
+
+// Libraries
+import { HomeIcon, ArrowUturnLeft } from "@heroicons/react/24/solid";
 
 const Error = () => {
   const error = useRouteError();
-  const navigate = useNavigate();
-
-  // Provide a fallback message if error is null
-  const message =
-    (error && (error.message || error.statusText)) ||
-    "An unexpected error occurred.";
-
+  const navigate = useNavigation();
+>>>>>>>>> Temporary merge branch 2
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h1 className="text-6xl font-bold text-red-600">We have a problem</h1>
-      <p>{message}</p>
+      <p>{error.message || error.statusText}</p>
       <div className="flex-md gap-4 mt-4">
-        <button className="btn btn--dark" onClick={() => navigate(-1)}>
-          <ArrowUturnLeftIcon width={20} />
+        <button className="btn btn--dark"
+          onClick={() => navigate(-1)}>
+          <ArrowUturnLeft width={20} />
           <span>Go Back</span>
         </button>
         <Link to="/" className="btn btn--dark">

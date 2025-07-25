@@ -16,6 +16,17 @@ export const fetchData = (key) => {
     }
 }
 
+// create budget
+export const createBudget = ({name, amount}) => {
+    const newItem = {
+        id: crypto.randomUUID(),
+        name: name,
+        createAt: Date.now(),
+        amount: +amount,
+        // color: 
+    }
+}
+
 // Get all items from local storage
 export const getAllMatchingItems = ({ category, key, value }) => {
     const data = fetchData(category) ?? [];
