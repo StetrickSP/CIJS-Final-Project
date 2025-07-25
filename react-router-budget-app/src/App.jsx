@@ -5,16 +5,19 @@ import Main, { mainLoader } from "./layouts/Main";
 
 // Actions
 import { logoutAction } from "./actions/logout";
+import { deleteBudget } from "./actions/deleteBudget";
 
 // Routes
 import Dashboard, { dashboardLoader, dashboardAction } from "./pages/Dashboard";
 import About, { aboutLoader } from "./pages/About";
 import Error from "./pages/Error";
 import ExpensesPage, { expensesLoader, expensesAction } from "./pages/ExpensesPage";
+import BudgetPage, { budgetLoader, budgetAction } from "./pages/BudgetPage";
 
 // Library
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 const router = createBrowserRouter([
   {
@@ -41,10 +44,24 @@ const router = createBrowserRouter([
         element: <h1>This is our contact infomation</h1>
       },
       {
+        path: "budget/:id", 
+        element: <BudgetPage/>,
+        loader: budgetLoader, 
+        action: budgetAction, 
+        errorElement: <Error/>,
+        children: [
+          {
+            path: "delete",
+            action: deleteBudget,
+          }
+        ]
+      },
+      {
         path: "expenses", 
         element: <ExpensesPage/>,
         loader: expensesLoader, 
         action: expensesAction, // This will call the expenses action when the user submits the form
+        errorElement: <Error/>,
       },
       {
         path: "logout", 
