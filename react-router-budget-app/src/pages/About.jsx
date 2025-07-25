@@ -16,7 +16,7 @@ const About = () => {
     /// !-------------------------------- Cook o phan nay ----------------------------------- ///
     return (
         <div>  
-            <h1>Welcome, {userName}</h1>
+            <h1>Welcome {userName}</h1>
             <h2>About us</h2>
             <p>Welcome! This is where you will find out more about us!</p>
         </div>
