@@ -41,7 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "contact", 
-        element: <h1>This is our contact infomation</h1>
+        element:<>
+        <h1>This is our contact infomation</h1>
+        <p>Ngô Tấn Tài (CTO): 0767139786</p>
+        <p>Hồ Văn Ngọc (CEO): 0903664457</p>
+        </>
       },
       {
         path: "budget/:id", 
