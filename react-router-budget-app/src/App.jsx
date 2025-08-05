@@ -13,6 +13,7 @@ import About, { aboutLoader } from "./pages/About";
 import Error from "./pages/Error";
 import ExpensesPage, { expensesLoader, expensesAction } from "./pages/ExpensesPage";
 import BudgetPage, { budgetLoader, budgetAction } from "./pages/BudgetPage";
+import Chart from "./pages/Chart";
 
 // Library
 import { ToastContainer } from 'react-toastify';
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         <p>Ngô Tấn Tài (CTO): 0767139786</p>
         <p>Hồ Văn Ngọc (CEO): 0903664457</p>
         </>
+      },
+      {
+        path: "chart", 
+        element: <Chart/>,
+        errorElement: <Error/>,
       },
       {
         path: "budget/:id", 

@@ -2,7 +2,7 @@
 import { Form, NavLink } from "react-router-dom";
 
 // library
-import { TrashIcon, UserGroupIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import { TrashIcon, UserGroupIcon, PhoneIcon, ChartBarIcon} from '@heroicons/react/24/solid';
 
 // assets
 import logomark from '../assets/logomark.svg';
@@ -21,6 +21,10 @@ const Nav = ( {userName} ) => {
       <NavLink to="/contact" aria-label="Go to home page">
         <PhoneIcon width={30} color="#10B7C0"/>
         <span>Contacts</span>
+      </NavLink>
+      <NavLink to="/chart" aria-label="Go to home page">
+        <ChartBarIcon width={30} color="#10B7C0"/>
+        <span>Chart</span>
       </NavLink>
       {
         userName && (
